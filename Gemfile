@@ -6,20 +6,26 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'haml', '~> 5.2', '>= 5.2.1'
+gem 'haml', '~> 5.2'
+gem 'haml-rails', '~> 2.0.1'
 gem 'jbuilder', '~> 2.7'
-gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.0'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'jquery-rails', '~> 4.4'
+gem 'pg', '~> 1.2.3'
+gem 'puma', '~> 5.2.2'
+gem 'rails', '~> 6.1.3.2'
+gem 'rspec', '~> 3.10'
+gem 'rspec-rails', '~> 5.0.1'
+gem 'rubocop', '~> 1.14', require: false
+gem 'rubocop-rails', '~> 2.10.1'
 gem 'sass-rails', '>= 6'
+gem 'simplecov', '~> 0.21.2', require: false
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 3.35', '>= 3.35.3'
-  gem 'factory_bot_rails', '~> 6.1'
-  gem 'rubocop-rails', '~> 2.9', '>= 2.9.1'
+  gem 'capybara', '~> 3.35.3'
+  gem 'factory_bot', ' ~> 6.1'
 end
 
 group :development do
@@ -28,8 +34,6 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'pry-rails', '~> 0.3.4'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
-  gem 'rubocop', '~> 1.11', require: false
   gem 'rubocop-discourse', '~> 2.5'
   gem 'rubocop-rspec', '~> 2.2', require: false
   gem 'solargraph', '~> 0.40.4'
@@ -38,13 +42,11 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'database_cleaner', '~> 2.0.1'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'pry', '~> 0.14.0'
   gem 'rack-test', '~> 1.1'
-  gem 'rspec', '~> 3.10'
   gem 'selenium-webdriver'
-  gem 'simplecov', '~> 0.21.2', require: false
   gem 'webdrivers', '~> 5'
 end
 
