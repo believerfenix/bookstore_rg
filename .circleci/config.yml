@@ -31,7 +31,7 @@ jobs:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
-      BOOK_STORE_DATABASE_PASSWORD: "book_store_rg"
+      BOOK_STORE_DATABASE_PASSWORD: "book_store"
       RAILS_ENV: test
     steps:
       - checkout
@@ -53,6 +53,7 @@ jobs:
       - run:
           name: run specs
           command: bundle exec rspec
+    parallelism: 4
 
 workflows:
   version: 2
