@@ -1,5 +1,12 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'production'
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
-const environment = require('./environment')
+const environment = require('./environment');
+const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = environment.toWebpackConfig()
+environment.config.optimization.minimizer.forEach(function(minimizer) {
+    if(minimizer instanceof TerserPlugin) {
+        minimizer.options.parallel = false
+    }
+});
+
+module.exports = environment.toWebpackConfig();
