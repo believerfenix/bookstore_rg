@@ -1,0 +1,8 @@
+!!!
+%html
+  = render 'layouts/partials/head'
+
+  %body
+    = render 'layouts/partials/header', cached: true
+    = yield
+    = render 'layouts/partials/footer', cached: true

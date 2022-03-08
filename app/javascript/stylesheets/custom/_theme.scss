@@ -7,7 +7,6 @@
 }
 .navbar-brand {
   font-size: $font-size-base;
-  padding: 30px;
 }
 .navbar-toggle {
   margin-left: 15px;
@@ -483,7 +482,6 @@
 @media (min-width: $grid-float-breakpoint) {
   .navbar-nav {
     float: right;
-    padding: 15px;
   }
   h1,
   .h1 {
