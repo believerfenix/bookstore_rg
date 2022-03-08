@@ -5,9 +5,13 @@ default: &default
   public_output_path: packs
   cache_path: tmp/cache/webpacker
   webpack_compile_output: true
+
   additional_paths: ['app/assets']
+
   cache_manifest: false
+
   extract_css: false
+  
   static_assets_extensions:
     - .jpg
     - .jpeg
