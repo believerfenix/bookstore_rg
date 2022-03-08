@@ -6,17 +6,9 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'config/**/*'
-    - 'node_modules/**/*'
-    - 'vendor/bundle/**/*'
-    - 'db/migrate/**/*'
-    - 'db/schema.rb'
-    - 'db/seeds.rb'
-  
+
 Style/Documentation:
   Enabled: false
-
-Layout/LineLength:
-  Max: 120
 
 Metrics/BlockLength:
   Exclude:

@@ -1,8 +1,7 @@
+# frozen_string_literal: true
+
 class CreatePages < ActiveRecord::Migration[6.1]
   def change
-    create_table :pages do |t|
-
-      t.timestamps
-    end
+    create_table :pages, &:timestamps
   end
 end
