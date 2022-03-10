@@ -26,6 +26,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.35.3'
   gem 'factory_bot', ' ~> 6.1'
+  gem 'faker', '~> 2.17'
 end
 
 group :development do
@@ -43,7 +44,6 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 2.0.1'
-  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'pry', '~> 0.14.0'
   gem 'rack-test', '~> 1.1'
   gem 'selenium-webdriver'
