@@ -1,0 +1,10 @@
+.hidden-xs.clearfix
+  .dropdowns.pull-right
+    .dropdown.width-240
+      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        = t("book.sort.#{params[:filter] || Books::SortBooksService::BOOK_DEFAULT_FILTER}")
+        %i.fa.fa-angle-down.dropdown-icon.pull-right
+      %ul.dropdown-menu
+        - Books::SortBooksService::BOOK_FILTERS.each_key do |filter|
+          %li
+            = link_to t("book.sort.#{filter}"), books_path(filter: filter)
