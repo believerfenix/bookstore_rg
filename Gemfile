@@ -8,6 +8,7 @@ ruby '2.7.3'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'draper', '~> 4.0.2'
 gem 'factory_bot_rails', '~> 6.2'
+gem 'faker', '~> 2.20'
 gem 'haml', '~> 5.2'
 gem 'haml-rails', '~> 2.0.1'
 gem 'jbuilder', '~> 2.7'
@@ -28,7 +29,6 @@ gem 'webpacker', '~> 5.0'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.35.3'
-  gem 'faker', '~> 2.20'
 end
 
 group :development do
