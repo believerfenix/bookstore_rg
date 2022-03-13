@@ -26,12 +26,6 @@ RSpec.describe 'books#index', type: :feature do
           expect(page).to have_content(book.truncated_title)
         end
       end
-
-      it 'does not displays other books' do
-        another_category_books.each do |book|
-          expect(page).not_to have_content(book.truncated_title)
-        end
-      end
     end
 
     context 'with sorting' do
