@@ -29,7 +29,7 @@ en:
     all: All
     dropdown: 
       created_at_asc: Newest first
-      popolar_asc: Popular first
+      popular_asc: Popular first
       price_asc: "Price: Low to hight"
       price_desc: "Price: Hight to low"
     load_more: Load more...
