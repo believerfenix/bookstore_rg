@@ -3,6 +3,9 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
   config.cache_classes = true
   config.eager_load = true
   config.consider_all_requests_local       = false

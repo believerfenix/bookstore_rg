@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'devise', '~> 4.8.1'
 gem 'draper', '~> 4.0.2'
 gem 'factory_bot_rails', '~> 6.2'
 gem 'faker', '~> 2.20'
@@ -13,6 +14,7 @@ gem 'haml', '~> 5.2'
 gem 'haml-rails', '~> 2.0.1'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails', '~> 4.4'
+gem 'omniauth-facebook', '~> 9.0'
 gem 'pagy', '~> 3.5'
 gem 'pg', '~> 1.2.3'
 gem 'puma', '~> 5.2.2'
@@ -23,6 +25,7 @@ gem 'rubocop', '~> 1.14', require: false
 gem 'rubocop-rails', '~> 2.10.1'
 gem 'sass-rails', '>= 6'
 gem 'simplecov', '~> 0.21.2', require: false
+gem 'simple_form', '~> 5.1'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
