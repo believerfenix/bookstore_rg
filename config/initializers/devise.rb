@@ -13,7 +13,7 @@ Devise.setup do |config|
 
   config.stretches = Rails.env.test? ? 1 : 12
 
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   config.expire_all_remember_me_on_sign_out = true
 
@@ -24,4 +24,6 @@ Devise.setup do |config|
   config.reset_password_within = 6.hours
 
   config.sign_out_via = :delete
+
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
 end

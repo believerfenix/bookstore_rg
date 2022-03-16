@@ -1,0 +1,24 @@
+.text-center
+  = render partial: 'devise/shared/facebook_authoriization'
+.general-form.field
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: "form-control" }}) do |f|
+    .form-group.mb-30
+      = f.input :email, autofocus: true, autocomplete: "email", placeholder: t('devise.email')
+    .form-group.mb-30
+      = f.input :password, autocomplete: "current-password", placeholder: t('devise.password')
+      = link_to t('devise.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
+    - if devise_mapping.rememberable?
+      .form-group.checkbox.text-center.mb-30
+        %label.checkbox-label
+          = f.check_box :remember_me, hidden: "true" , class: 'checkbox-input'
+          %span.checkbox-icon
+            %i.fa.fa-check
+          %span.checkbox-text
+            = t('devise.remember_me')
+    .text-center
+      .actions
+        = f.submit t('devise.log_in'), class: 'btn btn-default mb-20'
+    .text-center
+      %p.general-sign-text.text-center
+        = t('devise.dont_have_account')
+        = link_to t('devise.sign_up'), new_user_registration_path, class: 'in-gold-500'
