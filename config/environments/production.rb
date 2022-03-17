@@ -4,8 +4,8 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   
-  config.action_mailer.default_url_options = { host: 'https://bookstore--rg.herokuapp.com'}
-  config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.default_url_options = { host: 'https://bookstore--rg.herokuapp.com'}
+  #config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :user_name => '00dc23b06b0607',
     :password => 'ff8f174d63c17b',
@@ -13,6 +13,23 @@ Rails.application.configure do
     :domain => 'smtp.mailtrap.io',
     :port => '2525',
     :authentication => :cram_md5
+  }
+
+  config.action_mailer.default_url_options = { :host => 'https://bookstore--rg.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "mail.google.com",####important
+    authentication: "plain",
+    enable_starttls_auto: true,
+    :user_name => '00dc23b06b0607',
+    :password => 'ff8f174d63c17b'
   }
 
   config.cache_classes = true
