@@ -7,12 +7,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'https://bookstore--rg.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    port: 587,
-    address: 'smtp.gmail.com',
-    :user_name => '00dc23b06b0607',
-    :password => 'ff8f174d63c17b',
-    authentication: :plain,
-    enable_starttls_auto: true
+        :address => "smtp.gmail.com",
+        :port => 587,
+        :domain => 'https://bookstore--rg.herokuapp.com',
+        :user_name => "us55554444us55554444@gmail.com",
+        :password => "07042001gr",
+        :authentication => :plain,
+        :enable_starttls_auto => true
   }
 
   config.cache_classes = true
