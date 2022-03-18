@@ -5,13 +5,14 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do  
 
   config.action_mailer.default_url_options = { :host => 'https://bookstore--rg.herokuapp.com' }
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
         :address => "smtp.gmail.com",
         :port => 587,
-        :domain => 'https://bookstore--rg.herokuapp.com',
+        :domain => 'gmail.com',
         :user_name => "us55554444us55554444@gmail.com",
-        :password => "07042001gr",
+        :password => "lhcqxzjryvgtcvej",
         :authentication => :plain,
         :enable_starttls_auto => true
   }
