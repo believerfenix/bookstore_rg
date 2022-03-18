@@ -2,26 +2,15 @@
 
 require 'active_support/core_ext/integer/time'
 
-Rails.application.configure do
-  
-  #config.action_mailer.default_url_options = { host: 'https://bookstore--rg.herokuapp.com'}
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = {
-  #  :user_name => '00dc23b06b0607',
-  #  :password => 'ff8f174d63c17b',
-  #  :address => 'smtp.mailtrap.io',
-  #  :domain => 'smtp.mailtrap.io',
-  #  :port => '2525',
-  #  :authentication => :cram_md5
-  #}
+Rails.application.configure do  
 
   config.action_mailer.default_url_options = { :host => 'https://bookstore--rg.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port: 587,
     address: 'smtp.gmail.com',
-    user_name: Rails.application.credentials[:smtp][:user_name],
-    password: Rails.application.credentials[:smtp][:password],
+    :user_name => '00dc23b06b0607',
+    :password => 'ff8f174d63c17b',
     authentication: :plain,
     enable_starttls_auto: true
   }
