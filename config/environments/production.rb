@@ -6,28 +6,22 @@ Rails.application.configure do
   
   #config.action_mailer.default_url_options = { host: 'https://bookstore--rg.herokuapp.com'}
   #config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :user_name => '00dc23b06b0607',
-    :password => 'ff8f174d63c17b',
-    :address => 'smtp.mailtrap.io',
-    :domain => 'smtp.mailtrap.io',
-    :port => '2525',
-    :authentication => :cram_md5
-  }
+  #config.action_mailer.smtp_settings = {
+  #  :user_name => '00dc23b06b0607',
+  #  :password => 'ff8f174d63c17b',
+  #  :address => 'smtp.mailtrap.io',
+  #  :domain => 'smtp.mailtrap.io',
+  #  :port => '2525',
+  #  :authentication => :cram_md5
+  #}
 
   config.action_mailer.default_url_options = { :host => 'https://bookstore--rg.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
-  # change to true to allow email to be sent during development
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
-
   config.action_mailer.smtp_settings = {
-    domain: "mail.google.com",
     port: 587,
     address: 'smtp.gmail.com',
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
+    user_name: Rails.application.credentials[:smtp][:user_name],
+    password: Rails.application.credentials[:smtp][:password],
     authentication: :plain,
     enable_starttls_auto: true
   }
