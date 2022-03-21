@@ -3,6 +3,9 @@
 class User < ApplicationRecord
   PASSWORD_FORMAT = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/.freeze
 
+  has_many :user_addresses, dependent: :destroy
+  has_many :addresses, through: :user_addresses
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable,
