@@ -23,4 +23,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_index(:email).unique }
     it { is_expected.to have_db_index(:reset_password_token).unique }
   end
+
+  context 'with associations' do
+    it { is_expected.to have_many(:user_addresses).dependent(:destroy) }
+    it { is_expected.to have_many(:addresses).through(:user_addresses) }
+  end
 end
