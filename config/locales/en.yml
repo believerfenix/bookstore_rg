@@ -23,6 +23,9 @@ en:
     email: support@bookstore.com
     phone: (555)-555-5555
   button:
+    save: Save
+    go_back: Go back
+    cancel: Cancel
     get_started: Get Started
   catalog:
     title: Catalog
@@ -50,3 +53,20 @@ en:
       price_desc: 'Price: Hight to low'
       title_asc: 'Title: A - Z'
       title_desc: 'Title: Z - A'
+  address:
+    form:
+      success: Successfully added %{kind} address
+    kind:
+      billing: Billing Address
+      shipping: Shipping Address
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    country: Country
+    city: City
+    zip: Zip
+    phone: Phone
+  registrations:
+    settings: Settings
+    address: Address
+    privacy: Privacy

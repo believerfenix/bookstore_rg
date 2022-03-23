@@ -1,0 +1,8 @@
+= f.input :first_name, placeholder: t('address.first_name'), required: true
+= f.input :last_name, placeholder: t('address.last_name'), required: true
+= f.input :country, required: true, collection: ISO3166::Country.all.sort_by(&:name), as: :select, prompt: :translate
+= f.input :city, placeholder: t('address.city'), required: true
+= f.input :address, placeholder: t('address.address'), required: true
+= f.input :zip, placeholder: t('address.zip'), required: true
+= f.input :phone, placeholder: t('address.phone'), required: true
+= f.hidden_field :kind, value: kind
