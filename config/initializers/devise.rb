@@ -25,5 +25,6 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  config.omniauth :facebook, "357282192966229", "4fcef922faeb64be1cc05afbbfb7cf8d"
+  config.omniauth :facebook, Rails.application.credentials[:facebook][:facebook_app_id],
+                             Rails.application.credentials[:facebook][:facebook_app_secret]
 end
