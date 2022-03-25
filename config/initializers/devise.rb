@@ -25,5 +25,6 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  config.omniauth :facebook, ENV[HEROKU_OAUTH_ID], ENV[HEROKU_OAUTH_SECRET]
+  config.omniauth :facebook, Rails.application.credentials.development[:facebook_app_id],
+                             Rails.application.credentials.development[:facebook_app_secret]
 end
