@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable,
-         :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: %i[facebook]
 
   validates :password, format: { with: PASSWORD_FORMAT }, if: :password_required?
   validates :email, presence: true
