@@ -53,6 +53,7 @@ jobs:
       - run:
           name: run specs
           command: bundle exec rspec
+    parallelism: 4
 
 workflows:
   version: 2
