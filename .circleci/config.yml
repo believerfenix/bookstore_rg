@@ -1,0 +1,63 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.0
+  node: circleci/node@2
+  browser-tools: circleci/browser-tools@1.0.1
+
+jobs:
+  lintering:
+    docker:
+      - image: cimg/ruby:2.7.3-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
+
+  test:
+    docker:
+      - image: cimg/ruby:2.7.3-node
+      - image: circleci/postgres:12-alpine
+        environment:
+          POSTGRES_USER: arthur
+          POSTGRES_DB: bookstore_rg_test
+          POSTGRES_PASSWORD: "arthur"
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      BOOK_STORE_DATABASE_PASSWORD: "book_store"
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          name: Install ImageMagick
+          command: sudo apt-get install imagemagick
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: run specs
+          command: bundle exec rspec
+    parallelism: 4
+
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      - lintering
+      - test
