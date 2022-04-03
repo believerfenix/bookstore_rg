@@ -18,7 +18,7 @@
             %ul.dropdown-menu
               %li
                 = link_to t('catalog.all'), books_path
-              - Category.all.each do |category|
+              - @categories.each do |category|
                 %li
                   = link_to category.name, books_path(category_id: category)
           - if user_signed_in?

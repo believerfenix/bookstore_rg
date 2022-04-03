@@ -59,4 +59,4 @@ workflows:
   lint_and_test:
     jobs:
       - lintering
-      - test
+     # - test
