@@ -6,18 +6,18 @@ $(document).on('turbolinks:load', function(){
     var lessText = "Read less";
 
     $('#minus').click(function(e){
-      var current_value = $('.input-count-book').val();
-      if (current_value >= 2) {
-        var new_value = Number(current_value) - 1;
-        $('.input-count-book').val(new_value);
+      var currentValue = $('.input-count-book').val();
+      if (currentValue >= 2) {
+        var newValue = Number(currentValue) - 1;
+        $('.input-count-book').val(newValue);
       }
     });
   
     $('#plus').click(function(e){
-      var current_value = $('.input-count-book').val();
-      if (current_value < 10) {
-        var new_value = Number(current_value) + 1;
-        $('.input-count-book').val(new_value);
+      var currentValue = $('.input-count-book').val();
+      if (currentValue < 10) {
+        var newValue = Number(currentValue) + 1;
+        $('.input-count-book').val(newValue);
       }
     });
 

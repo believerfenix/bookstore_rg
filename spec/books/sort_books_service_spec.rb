@@ -28,7 +28,7 @@ RSpec.describe Books::SortBooksService do
 
     context 'with category' do
       let(:category) { create(:category) }
-      let(:category_book) { create(:book, category: category) }
+      let!(:category_book) { create(:book, category: category) }
       let!(:another_category_book) { create(:book) }
       let(:params) { { category_id: category.id } }
 
@@ -43,12 +43,12 @@ RSpec.describe Books::SortBooksService do
 
     context 'without category' do
       let(:category) { create(:category) }
-      let(:category_book) { create(:book, category: category) }
+      let!(:category_book) { create(:book, category: category) }
       let!(:another_category_book) { create(:book) }
       let(:params) { { category_id: nil } }
 
       it 'show all books' do
-        expect(subject).to include(category_book) and include(another_category_book)
+        expect(subject).to include(category_book).and include(another_category_book)
       end
     end
   end
