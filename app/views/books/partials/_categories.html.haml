@@ -4,9 +4,9 @@
       = t('catalog.all')
       %span.badge.general-badge
         = @books_count
-  - @categories.all.each do |category|
+  - @categories.each do |category|
     %li.mr-35
-      = link_to books_path(category_id: category), class: 'filter-link' do
+      = link_to books_path(category_id: category.id), class: 'filter-link' do
         = category.name
         %span.badge.general-badge
           = category.books.count
