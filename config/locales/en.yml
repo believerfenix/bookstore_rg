@@ -1,2 +1,52 @@
 en:
-  hello: "Hello world"
+  number:
+     currency:
+        format:
+          unit: '€'
+          delimiter: ','
+          separator: '.'
+          precision: 2
+          format: '%u%n'
+  home:
+    welcome: Welcome to our amazing Bookstore!
+    about: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+    best_sellers: Best Sellers
+    buy_now: Buy now
+  layout:
+    title: Bookstore
+    home: Home
+    shop: Shop
+    my_account: My account
+    orders: Orders
+    settings: Settings
+    log_out: Log out
+    email: support@bookstore.com
+    phone: (555)-555-5555
+  button:
+    get_started: Get Started
+  catalog:
+    title: Catalog
+    all: All
+    dropdown: 
+      created_at_asc: Newest first
+      popular_asc: Popular first
+      price_asc: "Price: Low to hight"
+      price_desc: "Price: Hight to low"
+    load_more: Load more...
+  book:
+    back_to_catalog: Back to results
+    description: Description
+    read_more: Read more
+    hide: Hide
+    publication_year: Year of publication
+    dimensions: Dimensions
+    dimensions_params: 'H:%{height} x W: %{width} x D: %{depth}'
+    material: Material
+    add_to_cart: Add to Cart
+    sort:
+      created_at_desc: Newest first
+      popular_asc: 'Popular'
+      price_asc: 'Price: Low to hight'
+      price_desc: 'Price: Hight to low'
+      title_asc: 'Title: A - Z'
+      title_desc: 'Title: Z - A'

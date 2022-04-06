@@ -2,60 +2,35 @@
   %main.container
     #slider.carousel.slide{'data-ride': "carousel"}
       %ol.carousel-indicators
-        %li.active{'data-target': "#slider", 'data-slide-to': "0"}
-        %li{'data-target': "#slider", 'data-slide-to': "1"}
+        - @latest_books.count.times do |index|
+          %li{'class': "#{'active' if index.zero?}", 'data-target': "#slider", 'data-slide-to': "#{index}"}
       .carousel-inner{role: "listbox"}
-        .item.active
-          .row
+        - latest_books.each_with_index do |book, index|
+          %div{ class: "item #{'active' if index.zero?}" }
             .col-sm-5
               .general-img-wrap
                 %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
             .col-sm-7
               .mb-60
-                %h1 Ruby for Beginners 1
-                %p.lead Ruby is an interpreted, high-level, general-purpose programming language which supports multiple programming paradigms.
-                %p.lead.small Yukihiro Matsumoto
+                %h1= book.title
+                %p.lead= book.short_description
+                %p.lead.small= book.all_authors_fullname
                 .general-align
-                  %button.disabled.btn Buy Now
-        .item
-          .row
-            .col-sm-5
-              .general-img-wrap
-                %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .col-sm-7
-              .mb-60
-                %h1 Ruby for Beginners 2
-                %p.lead Ruby is an interpreted, high-level, general-purpose programming language which supports multiple programming paradigms.
-                %p.lead.small Yukihiro Matsumoto
-                .general-align
-                  %button.btn.btn-primary Buy Now
-        .item
-          .row
-            .col-sm-5
-              .general-img-wrap
-                %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .col-sm-7
-              .mb-60
-                %h1 Ruby for Beginners 3
-                %p.lead Ruby is an interpreted, high-level, general-purpose programming language which supports multiple programming paradigms.
-                %p.lead.small Yukihiro Matsumoto
-                .general-align
-                  %button.btn.btn-primary Buy Now
-                  
+                  %button.btn.btn-primary= t('home.buy_now')
       %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
         %span.icon-prev{'aria-hidden': "true"}
-        %span.sr-only Previous
+        %span.sr-only
       %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
         %span.icon-next{'aria-hidden': "true"}
-        %span.sr-only Next
+        %span.sr-only
   .container
     .jumbotron.text-center.mb-0
-      %h2.h1 Welcome to our amazing Bookstore!
+      %h2.h1= t('home.welcome')
       .mb-res-50
-        %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
-      %button.btn.btn-default Get Started
+        %p=  t('home.about')
+      = link_to t('button.get_started'), books_path, class: 'button btn btn-default'
     .mb-35
-      %h3 Best Sellers
+      %h3= t('home.best_sellers')
       .row
         .col-sm-6.col-md-3
           .general-thumb-wrap
@@ -75,7 +50,7 @@
             %p.lead.small Yukihiro Matsumoto
         .col-sm-6.col-md-3
           .general-thumb-wrap
-            .thumbnail.general-thumbnail.disabled
+            .thumbnail.general-thumbnail
               %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
               .thumb-hover
                 .general-thumb-link-wrap

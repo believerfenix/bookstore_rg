@@ -1,0 +1,2 @@
+$('#books_wrapper').append('#{j(render partial: "books/partials/book", collection: books, as: :book)}');
+$('#load_more_link').html('#{j(render partial: "books/partials/load_more")}');

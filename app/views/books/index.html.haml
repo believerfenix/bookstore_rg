@@ -1,0 +1,12 @@
+%body
+  %main.container
+    %h1.general-title-margin
+      = t('catalog.title')
+    = render partial: 'books/partials/books_filter'
+    = render partial: 'books/partials/categories'
+    .mb-120
+      .row#books_wrapper
+        = render partial: 'books/partials/book', collection: books, as: :book
+      .text-center 
+        %button.btn.btn-default#load_more_link
+          = render partial: 'books/partials/load_more'
