@@ -9,6 +9,8 @@ class BooksController < ApplicationController
   def index
     @filters = Books::SortBooksService::BOOK_FILTERS
     @pagy, @books = pagy_countless(scoped_books, link_extra: 'data-remote="true"', items: BOOKS_PER_PAGE)
+    @books_count = Book.all.count
+    @categories = Category.all
   end
 
   def show

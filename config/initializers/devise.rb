@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Devise.setup do |config|
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'bookstore@ruby.com'
 
   require 'devise/orm/active_record'
 
@@ -25,6 +25,7 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  config.omniauth :facebook, Rails.application.credentials.facebook[:facebook_app_id],
-                             Rails.application.credentials.facebook[:facebook_app_secret]
+  config.omniauth :facebook, Rails.application.credentials[:facebook][:facebook_app_id],
+                             Rails.application.credentials[:facebook][:facebook_app_secret],
+                             token_params: { parse: :json }
 end

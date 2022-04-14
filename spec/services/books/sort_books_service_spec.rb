@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Books::SortBooksService do
-  describe 'call' do
+  describe '#call' do
     subject { Books::SortBooksService.new(params).call }
 
     context 'with sorting' do
@@ -28,9 +28,9 @@ RSpec.describe Books::SortBooksService do
 
     context 'with category' do
       let(:category) { create(:category) }
-      let(:category_book) { create(:book, category: category) }
-      let(:another_category_book) { create(:book) }
-      let(:params) { { category_id: category } }
+      let!(:category_book) { create(:book, category: category) }
+      let!(:another_category_book) { create(:book) }
+      let(:params) { { category_id: category.id } }
 
       it 'filters books by category' do
         expect(subject).to include(category_book)
@@ -43,12 +43,12 @@ RSpec.describe Books::SortBooksService do
 
     context 'without category' do
       let(:category) { create(:category) }
-      let(:category_book) { create(:book, category: category) }
-      let(:another_category_book) { create(:book) }
+      let!(:category_book) { create(:book, category: category) }
+      let!(:another_category_book) { create(:book) }
       let(:params) { { category_id: nil } }
 
       it 'show all books' do
-        expect(subject).to include(category_book) and include(another_category_book)
+        expect(subject).to include(category_book).and include(another_category_book)
       end
     end
   end

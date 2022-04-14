@@ -67,11 +67,6 @@ ActiveRecord::Schema.define(version: 2022_03_21_102135) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "pages", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "user_addresses", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "address_id"

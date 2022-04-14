@@ -22,6 +22,8 @@ module Books
       order_by_filter
     end
 
+    private
+
     def find_books
       @books = @category_id ? Book.where(category_id: @category_id) : Book.all
     end

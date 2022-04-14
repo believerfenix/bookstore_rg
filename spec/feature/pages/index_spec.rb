@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# frozen_string_literal: true
 
 RSpec.describe 'index', type: :feature do
   context 'with slider' do
