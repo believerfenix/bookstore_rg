@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      default: "%Y.%m.%d - %H:%M"
   number:
      currency:
         format:
@@ -27,6 +30,7 @@ en:
     go_back: Go back
     cancel: Cancel
     get_started: Get Started
+    post: Post
   catalog:
     title: Catalog
     all: All
@@ -70,4 +74,9 @@ en:
     settings: Settings
     address: Address
     privacy: Privacy
+  review:
+    score: Score
+    verified_reviewer: Verified reviewer
+    reviews: Reviews %{reviews_count}
+    success: Thanks for Review. It will be published as soon as Admin will approve it.
 
