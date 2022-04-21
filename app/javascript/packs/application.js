@@ -15,3 +15,4 @@ ActiveStorage.start()
 
 import("src/books")
 import("src/users")
+import("src/reviews")
