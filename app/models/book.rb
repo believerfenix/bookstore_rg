@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books
   belongs_to :category
+  has_many :reviews, dependent: :destroy
 
   validates :title, :price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: MIN_PRICE }

@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :user_addresses, dependent: :destroy
   has_many :addresses, through: :user_addresses
+  has_many :reviews, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
