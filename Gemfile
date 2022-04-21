@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'activeadmin', '~> 2.11'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'countries', '~> 3.1'
 gem 'devise', '~> 4.8.1'
