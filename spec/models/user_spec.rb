@@ -24,6 +24,25 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_index(:reset_password_token).unique }
   end
 
+  context 'with validations' do
+    it { is_expected.to validate_presence_of(:email) }
+    context 'presence' do
+      it { is_expected.to validate_presence_of(:email) }
+    end
+
+    context 'with password' do
+      let(:valid_password) { 'Abcdefg1' }
+      context 'with valid password' do
+        it { is_expected.to allow_value(valid_password).for(:password) }
+      end
+      context 'with invalid password' do
+        %w[Abc abcdefg1 ABCDEFG1 Abcdefgh].each do |invalid_password|
+          it { is_expected.not_to allow_value(invalid_password).for(:password) }
+        end
+      end
+    end
+  end
+
   context 'with associations' do
     it { is_expected.to have_many(:user_addresses).dependent(:destroy) }
     it { is_expected.to have_many(:addresses).through(:user_addresses) }
