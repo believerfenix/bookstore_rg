@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'activeadmin', '~> 2.11'
+gem 'aws-sdk-s3', '~> 1.113'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'countries', '~> 3.1'
 gem 'devise', '~> 4.8.1'
@@ -12,6 +13,7 @@ gem 'factory_bot_rails', '~> 6.2'
 gem 'faker', '~> 2.20'
 gem 'haml', '~> 5.2'
 gem 'haml-rails', '~> 2.0.1'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails', '~> 4.4'
 gem 'omniauth-facebook', '~> 9.0'
