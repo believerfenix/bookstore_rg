@@ -481,7 +481,7 @@ DEPENDENCIES
   fasterer (~> 0.9)
   haml (~> 5.2)
   haml-rails (~> 2.0.1)
-  image_processing (~> 1.12, >= 1.12.1)
+  image_processing (~> 1.12)
   jbuilder (~> 2.7)
   jquery-rails (~> 4.4)
   lefthook (~> 0.7.2)
