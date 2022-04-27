@@ -13,5 +13,7 @@ FactoryBot.define do
     materials { Faker::Science.element }
     authors { create_list(:author, 2) }
     category
+    title_image { Rack::Test::UploadedFile.new('app/assets/images/default_book.png', 'default_book.png') }
+    images { [Rack::Test::UploadedFile.new('app/assets/images/default_book.png', 'default_book.png')] }
   end
 end

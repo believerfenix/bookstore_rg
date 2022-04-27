@@ -45,4 +45,30 @@ RSpec.describe BookDecorator do
       it { is_expected.to eq(expected_result) }
     end
   end
+
+  describe '#resize_title_image' do
+    subject { book.resize_title_image(500) }
+
+    let(:expected_result) { 500 }
+    before { subject.blob.analyze }
+
+    context 'when equals expected result' do
+      it 'resize title image' do
+        expect(subject.blob.metadata['width']).to eq(expected_result)
+      end
+    end
+  end
+
+  describe '#resized_images' do
+    subject { book.resized_images(500) }
+
+    let(:expected_result) { 500 }
+    before { subject.each { |image| image.blob.analyze } }
+
+    context 'when equals expected result' do
+      it ' resize image' do
+        expect(subject.first.blob.metadata['width']).to eq(expected_result)
+      end
+    end
+  end
 end
