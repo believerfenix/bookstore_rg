@@ -25,11 +25,8 @@ RSpec.describe 'New', type: :feature do
       click_button(I18n.t('devise.log_in'))
     end
 
-    it 'stays at sign in page' do
+    it 'stays at sign in page and displays invalid credencials message' do
       expect(page).to have_current_path(new_user_session_path)
-    end
-
-    it 'displays invalid credencials message' do
       expect(page).to have_content(I18n.t('devise.failure.not_found_in_database', authentication_keys: 'Email'))
     end
   end

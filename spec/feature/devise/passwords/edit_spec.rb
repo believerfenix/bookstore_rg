@@ -38,11 +38,8 @@ RSpec.describe 'Edit', type: :feature do
       click_button(I18n.t('devise.change_password'))
     end
 
-    it 'stays at change password page' do
+    it 'stays at change password page and displays invalid confirmation password message' do
       expect(page).to have_current_path(user_password_path)
-    end
-
-    it 'displays invalid confirmation password message' do
       expect(page).to have_content("doesn't match Password")
     end
   end
