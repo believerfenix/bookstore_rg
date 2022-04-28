@@ -7,8 +7,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "localhost:3000" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name => '00dc23b06b0607',
-    :password => 'ff8f174d63c17b',
+    :user_name => Rails.application.credentials[:smtp_develop][:user_name],
+    :password => Rails.application.credentials[:smtp_develop][:password],
     :address => 'smtp.mailtrap.io',
     :domain => 'smtp.mailtrap.io',
     :port => '2525',
