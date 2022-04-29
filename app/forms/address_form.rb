@@ -3,7 +3,8 @@
 class AddressForm
   include ActiveModel::Model
 
-  attr_accessor :id, :first_name, :last_name, :address, :city, :zip, :country, :phone, :kind, :created_at, :updated_at
+  attr_accessor :id, :first_name, :last_name, :address, :city, :zip, :country, :phone, :kind, :created_at, :updated_at,
+                :user, :user_id
 
   LENGTH = {
     first_name: 50,
@@ -27,10 +28,13 @@ class AddressForm
   validate :country_code_of_the_selected_country
   validate :country_from_the_above
 
-  def save(object)
+  def save
     return false if invalid?
 
-    object.addresses.find_or_create_by(kind: kind).update(params)
+    case kind
+    when 'billing' then user.billing_address = Address.new(params)
+    when 'shipping' then user.shipping_address = Address.new(params)
+    end
   end
 
   def params
@@ -49,7 +53,7 @@ class AddressForm
   private
 
   def country_from_the_above
-    errors.add(:country, :invalid) if ISO3166::Country.find_country_by_name(country).nil?
+    errors.add(:country, :invalid) unless ISO3166::Country.find_country_by_name(country)
   end
 
   def country_code_of_the_selected_country
