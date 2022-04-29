@@ -46,12 +46,12 @@ RSpec.describe 'Edit', type: :feature do
 
   context 'with password change' do
     let(:user_data) { attributes_for(:user) }
+    let(:user) { create(:user, user_data) }
 
     before do
-      user = create(:user, user_data)
       sign_in(user)
       visit edit_user_registration_path
-      page.find('#privacy').click
+      find('#privacy').click
     end
 
     context 'with valid input' do
@@ -80,24 +80,22 @@ RSpec.describe 'Edit', type: :feature do
         end
       end
 
-      [
-        I18n.t('errors.messages.invalid'),
-        I18n.t('errors.messages.too_short.other', count: 8),
-        I18n.t('errors.messages.confirmation', attribute: 'Password')
-      ].each do |text|
-        it { expect(page).to have_content(text) }
+      it do
+        expect(page).to have_content(I18n.t('errors.messages.invalid'))
+        expect(page).to have_content(I18n.t('errors.messages.too_short.other', count: 8))
+        expect(page).to have_content(I18n.t('errors.messages.confirmation', attribute: 'Password'))
       end
     end
   end
 
   context 'with email change' do
     let(:user_data) { attributes_for(:user) }
+    let(:user) { create(:user, user_data) }
 
     before do
-      user = create(:user, user_data)
       sign_in(user)
       visit edit_user_registration_path
-      page.find('#privacy').click
+      find('#privacy').click
     end
 
     context 'with valid input' do

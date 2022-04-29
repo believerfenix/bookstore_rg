@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 2022_04_18_121120) do
     t.string "country"
     t.string "phone"
     t.integer "kind"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -93,15 +95,6 @@ ActiveRecord::Schema.define(version: 2022_04_18_121120) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_addresses", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "address_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_user_addresses_on_address_id"
-    t.index ["user_id"], name: "index_user_addresses_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -125,8 +118,7 @@ ActiveRecord::Schema.define(version: 2022_04_18_121120) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "author_books", "authors"
   add_foreign_key "author_books", "books"
-  add_foreign_key "user_addresses", "addresses"
-  add_foreign_key "user_addresses", "users"
 end
