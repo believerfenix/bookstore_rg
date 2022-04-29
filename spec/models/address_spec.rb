@@ -15,8 +15,7 @@ RSpec.describe Address, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:user_addresses).dependent(:destroy) }
-    it { is_expected.to have_many(:users).through(:user_addresses) }
+    it { is_expected.to belong_to(:user) }
   end
 
   describe 'cast enum value' do

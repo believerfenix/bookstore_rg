@@ -25,7 +25,8 @@ RSpec.describe User, type: :model do
   end
 
   context 'with associations' do
-    it { is_expected.to have_many(:user_addresses).dependent(:destroy) }
-    it { is_expected.to have_many(:addresses).through(:user_addresses) }
+    %i[billing_address shipping_address].each do |model|
+      it { is_expected.to have_one(model).dependent(:destroy) }
+    end
   end
 end
