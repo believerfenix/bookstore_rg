@@ -13,21 +13,17 @@ RSpec.describe 'Index', type: :feature do
     click_link('Books')
   end
 
-  it 'displays book attributes' do
+  it 'displays book info' do
     book_attributes.each do |attribute|
       books.map(&:decorate).map(&attribute).each do |text|
         expect(page).to have_content(text)
       end
     end
-  end
 
-  it 'displays book category' do
     books.map { |book| book.category.name }.each do |category|
       expect(page).to have_content(category)
     end
-  end
 
-  it 'displays book short description' do
     books.map { |book| book.decorate.short_description }.each do |description|
       expect(page).to have_content(description)
     end

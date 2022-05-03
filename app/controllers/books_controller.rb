@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-  include Pagy::Backend
   BOOKS_PER_PAGE = 12
 
   decorates_assigned :book, :books

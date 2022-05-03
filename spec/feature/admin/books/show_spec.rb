@@ -13,15 +13,13 @@ RSpec.describe 'Show', type: :feature do
     visit admin_book_path(book)
   end
 
-  it 'displays book attribute' do
+  it 'displays book attribute and category' do
     book_attributes.each do |attribute|
       text = book.decorate.public_send(attribute)
 
       expect(page).to have_content(text)
     end
-  end
 
-  it 'displays book category' do
     expect(page).to have_content(book.category.name)
   end
 end
