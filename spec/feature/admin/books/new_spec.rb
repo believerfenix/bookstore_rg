@@ -38,14 +38,10 @@ RSpec.describe 'Show', type: :feature do
       click_button('commit')
     end
 
-    {
-      category: 'must exist',
-      title: "can't be blank",
-      price: "can't be blank and is not a number"
-    }.each do |attribute, error|
-      it "displays #{attribute} error message" do
-        expect(page).to have_content(error)
-      end
+    it 'displays error message' do
+      expect(page).to have_content('must exist')
+      expect(page).to have_content("can't be blank")
+      expect(page).to have_content("can't be blank and is not a number")
     end
   end
 end
