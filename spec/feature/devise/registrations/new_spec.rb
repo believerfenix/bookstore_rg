@@ -32,19 +32,10 @@ RSpec.describe 'New', type: :feature do
       click_button(I18n.t('devise.sign_up'))
     end
 
-    it 'stays at sign up page' do
+    it 'stays at sign up page  displays invalid email/password/confirmation password message' do
       expect(page).to have_current_path(user_registration_path)
-    end
-
-    it 'displays invalid email message' do
       expect(page).to have_content(I18n.t('activerecord.errors.models.user.attributes.email.invalid'))
-    end
-
-    it 'displays invalid password message' do
       expect(page).to have_content(I18n.t('activerecord.errors.models.user.attributes.password.invalid'))
-    end
-
-    it 'displays invalid confirmation password message' do
       expect(page).to have_content("doesn't match Password")
     end
   end

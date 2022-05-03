@@ -13,15 +13,13 @@ RSpec.describe 'Index', type: :feature do
     click_link('Authors')
   end
 
-  it 'displays authors attributes' do
+  it 'displays authors attributes and short description' do
     author_attributes.each do |attribute|
       authors.map(&attribute.to_sym).each do |text|
         expect(page).to have_content(text)
       end
     end
-  end
 
-  it "displays author's short description" do
     authors.map { |author| author.decorate.truncated_description }.each do |truncated_description|
       expect(page).to have_content(truncated_description)
     end

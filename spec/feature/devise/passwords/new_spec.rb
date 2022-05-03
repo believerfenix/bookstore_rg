@@ -26,11 +26,8 @@ RSpec.describe 'New', type: :feature do
       click_button(I18n.t('devise.email_instructions'))
     end
 
-    it 'stays at reset password page' do
+    it 'stays at reset password page and displays not found email message' do
       expect(page).to have_current_path(user_password_path)
-    end
-
-    it 'displays not found email message' do
       expect(page).to have_content(I18n.t('errors.messages.not_found'))
     end
   end

@@ -5,9 +5,9 @@ RSpec.describe 'Edit', type: :feature do
     raw, enc = Devise.token_generator.generate(User, :reset_password_token)
     { raw: raw, enc: enc }
   end
+  let(:user) { create(:user) }
 
   before do
-    user = create(:user)
     user.reset_password_token = token[:enc]
     user.reset_password_sent_at = Time.now.utc
     user.save(validate: false)
@@ -38,11 +38,8 @@ RSpec.describe 'Edit', type: :feature do
       click_button(I18n.t('devise.change_password'))
     end
 
-    it 'stays at change password page' do
+    it 'stays at change password page and displays invalid confirmation password message' do
       expect(page).to have_current_path(user_password_path)
-    end
-
-    it 'displays invalid confirmation password message' do
       expect(page).to have_content("doesn't match Password")
     end
   end
