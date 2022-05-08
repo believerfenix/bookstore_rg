@@ -1,0 +1,30 @@
+.general-cart-item.divider-lg-bottom
+  = link_to cart_path(order: { order_item: { destroy_id: order_item }}), method: :put, class: 'button close general-cart-close' do
+    %span{'aria-hidden': "true"} &times;
+    - if order_item.book.title_image.attached?
+      = link_to book_path(id: order_item.book) do
+        .general-img-wrap-table
+          %img.cart-img-shadow{src: url_for(order_item.book.title_image), alt: "design-book"}
+    = link_to book_path(id: order_item.book) do    
+      %p.title= order_item.book.title
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600= t('cart.price')
+        %td
+          %span.font-16.in-gold-500= number_to_currency(order_item.book.price)
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600= t('cart.quantity')
+        %td
+          .input-group
+            = link_to cart_path(order_item: { book_id: order_item.book, quantity: order_item.quantity - 1 }),  method: :put, remote: true, class: 'input-link mt-10' do
+              %i.fa.fa-minus.line-heaght-40
+            %input.form-control.quantity-input{type: "text", value: order_item.quantity}
+            = link_to cart_path(order_item: { book_id: order_item.book, quantity: order_item.quantity + 1 }), method: :put, remote: true, class: 'input-link mt-10' do
+              %i.fa.fa-plus.line-heaght-40
+      %tr
+        %td
+          %span.in-grey-600= t('cart.subtotal')
+        %td
+          %span.font-16.in-gold-500= number_to_currency(order_item.subtotal)
