@@ -1,10 +1,16 @@
 {
   "cSpell.words": [
     "activestorage",
+    "clearfix",
+    "datetime",
     "foreing",
     "fullname",
     "javascripts",
+    "omniauth",
+    "omniauthable",
     "Pagy",
-    "Turbolinks"
+    "plpgsql",
+    "Turbolinks",
+    "validatable"
   ]
 }
