@@ -6,7 +6,7 @@
         .general-thumb-link-wrap
           = link_to book_path(id: book), class: 'thumb-hover-link' do
             %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-          = link_to cart_path(order: { order_item: { book_id: book.id, quantity: 1 } }), method: :put, class: 'thumb-hover-link' do
+          %a.thumb-hover-link{href: "#"}
             %i.fa.fa-shopping-cart.thumb-icon
   .general-thumb-info
     %p.title= book.truncated_title
