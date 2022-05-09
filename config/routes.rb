@@ -8,5 +8,4 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show]
   resource :address, only: [:update]
   resources :reviews, only: [:create]
-  resource :cart, only: [:show, :update]
 end
