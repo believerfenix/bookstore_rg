@@ -100,4 +100,3 @@ RSpec.describe 'carts#show', type: :feature do
     end
   end
 end
-  
