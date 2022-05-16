@@ -1,0 +1,5 @@
+%h3.general-subtitle
+  = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon', method: :post do
+    %i.fa.fa-facebook-official.fa-lg
+  %p.general-login-text
+    = t('devise.or')

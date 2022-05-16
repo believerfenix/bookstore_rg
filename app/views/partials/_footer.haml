@@ -4,16 +4,16 @@
       .col-sm-9
         %ul.list-inline.general-align.mb-25
           %li
-            %a.nav-link{href: "#"} Home
+            = link_to t('layout.home'), root_path, class: 'nav-link'
           %li
-            %a.nav-link{href: "#"} Shop
+            %a.nav-link{href: "#"}= t('layout.shop')
           %li
-            %a.nav-link{href: "#"} Orders
+            %a.nav-link{href: "#"}= t('layout.orders')
           %li
-            %a.nav-link{href: "#"} Settings
+            %a.nav-link{href: "#"}= t('layout.shop')
       .col-sm-3
-        %p.general-nav-mail support@bookstore.com
-        %p.general-nav-number (555)-555-5555
+        %p.general-nav-mail= t('layout.email')
+        %p.general-nav-number= t('layout.phone')
         %ul.list-inline.general-align
           %li
             %a.nav-link{href: "#"}

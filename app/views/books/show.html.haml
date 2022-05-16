@@ -1,0 +1,46 @@
+%main.container
+  = link_to request.referer, class: 'general-back-link' do
+    %i.fa.fa-long-arrow-left.mr-15
+      = t('book.back_to_catalog')
+  .row
+    .col-sm-6
+      .product-gallery
+        .mb-20
+          %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+        .images.clearfix
+          %a.img-link{href: "#"}
+            %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+          %a.img-link{href: "#"}
+            %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+          %a.img-link{href: "#"}
+            %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+    .col-sm-6
+      %h1.mt-res-0= book.title
+      %p.lead.small= book.all_authors_fullname
+      .row
+        .col-xs-12.col-md-4
+          %p.h1.in-gold-500.mt-10 #{book.price}
+        .col-xs-5.col-md-3
+          .input-group.general-position
+            %a.input-link.b-n.pt-7#minus
+              %i.fa.fa-minus.line-height-40
+            = text_field_tag "books_count", "", class: 'form-control quantity-input input-count-book', value: 1
+            %a.b-n.input-link#plus
+              %i.fa.fa-plus.line-height-40
+        .col-xs-7.col-md-5
+          %button.btn.btn-default.pull-right.general-position= t('book.add_to_cart')
+      .general-info-wrap.divider-lg
+        = render partial: 'books/partials/book_description'
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('book.publication_year')
+          %p.lead.small.pull-right= book.publication_year
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('book.dimensions')
+          %p.lead.small.pull-right
+            = t('book.dimensions_params',height: book.height, width: book.width, depth: book.depth)
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('book.material')
+          %p.lead.small.pull-right= book.materials

@@ -3,6 +3,18 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => Rails.application.credentials[:smtp_develop][:user_name],
+    :password => Rails.application.credentials[:smtp_develop][:password],
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
+
   config.cache_classes = false
   config.eager_load = false
   config.consider_all_requests_local = true
