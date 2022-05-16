@@ -1,0 +1,15 @@
+.text-center.mb-25
+  %h2
+    = t('devise.change_password')
+.general-form.field
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, defaults: { input_html: { class: "form-control" }}) do |f|
+    = f.hidden_field :reset_password_token
+    .form-group.mb-30
+      = f.input :password, autofocus: true, autocomplete: "new_password", placeholder: t('devise.new_password')
+    .form-group.mb-30
+      %label.control-label.input-label{for: "password_confirmation"}
+      = f.input :password_confirmation, autocomplete: "off", placeholder: t('devise.confirm_password')
+    .text-center
+      .actions
+        = f.submit t('devise.change_password'), class: 'btn btn-default mb-20'
+      = link_to t('devise.go_back'), url_for(:back), class: "in-gold-500"
