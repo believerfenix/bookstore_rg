@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function(){
         $('.input-count-book').val(newValue);
       }
     });
-  
+
     $('#plus').click(function(e){
       var currentValue = $('.input-count-book').val();
       if (currentValue < 10) {
