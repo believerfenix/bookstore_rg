@@ -20,3 +20,4 @@ require 'faker'
   )
   book.authors << Author.all.sample(rand(1..3))
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
