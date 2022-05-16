@@ -14,3 +14,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import("src/books")
+import("src/users")

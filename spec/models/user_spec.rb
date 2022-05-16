@@ -23,4 +23,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_index(:email).unique }
     it { is_expected.to have_db_index(:reset_password_token).unique }
   end
+
+  context 'with associations' do
+    %i[billing_address shipping_address].each do |model|
+      it { is_expected.to have_one(model).dependent(:destroy) }
+    end
+  end
 end
