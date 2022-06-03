@@ -4,7 +4,10 @@ require 'rails_helper'
 
 RSpec.describe 'PagesController', type: :request do
   describe 'GET /index' do
+    let(:current_user) { create :user }
+
     before do
+      sign_in current_user
       get '/'
     end
 

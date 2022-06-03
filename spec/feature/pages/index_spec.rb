@@ -3,8 +3,12 @@
 RSpec.describe 'index', type: :feature do
   context 'with slider' do
     let!(:books) { BookDecorator.decorate_collection(create_list(:book, PagesController::LATEST_BOOKS_COUNT)) }
+    let(:current_user) { create :user }
 
-    before { visit root_path }
+    before do
+      sign_in current_user
+      visit root_path
+    end
 
     it "has #{PagesController::LATEST_BOOKS_COUNT} books indicators" do
       within('ol.carousel-indicators') { expect(page).to have_selector('li', count: books.count) }

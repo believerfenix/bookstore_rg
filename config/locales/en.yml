@@ -79,4 +79,5 @@ en:
     verified_reviewer: Verified reviewer
     reviews: Reviews %{reviews_count}
     success: Thanks for Review. It will be published as soon as Admin will approve it.
-
+  authorization:
+      not_authorized: User not authorized

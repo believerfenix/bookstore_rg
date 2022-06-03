@@ -7,5 +7,6 @@ class PagesController < ApplicationController
 
   def index
     @latest_books = Book.last(LATEST_BOOKS_COUNT)
+    authorize @latest_books, policy_class: PagePolicy
   end
 end
