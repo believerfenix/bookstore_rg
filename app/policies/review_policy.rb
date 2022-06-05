@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class PagePolicy < ApplicationPolicy
-  def index?
+class ReviewPolicy < ApplicationPolicy
+  def create?
     user.present?
   end
 end

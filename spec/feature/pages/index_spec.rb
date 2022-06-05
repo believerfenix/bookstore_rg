@@ -3,10 +3,8 @@
 RSpec.describe 'index', type: :feature do
   context 'with slider' do
     let!(:books) { BookDecorator.decorate_collection(create_list(:book, PagesController::LATEST_BOOKS_COUNT)) }
-    let(:current_user) { create :user }
 
     before do
-      sign_in current_user
       visit root_path
     end
 
