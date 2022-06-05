@@ -3,6 +3,7 @@
 class ReviewsController < ApplicationController
   def create
     review_form = ReviewForm.new(review_params)
+    authorize review_form, policy_class: ReviewPolicy
     if review_form.save(current_user)
       flash[:success] = I18n.t('review.success')
     else
