@@ -99,3 +99,5 @@ en:
     low_quantity: should be positive
     hight_quantity: Not enough books to buy
     item_deleted: Item successfully deleted
+  authorization:
+    not_authorized: User not authorized
