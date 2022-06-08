@@ -101,3 +101,10 @@ en:
     item_deleted: Item successfully deleted
   authorization:
     not_authorized: User not authorized
+  checkouts:
+    returning_customer: Returning Customer
+    new_customer: New Customer
+    you_will_be_able_to_create_password_later: You’ll be able to create password later
+    continue_checkout: Continue to Checkout
+  quick_registration:
+    success: 'User successfully created, email with password change instructions were sent'
