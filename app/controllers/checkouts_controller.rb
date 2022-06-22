@@ -10,6 +10,7 @@ class CheckoutsController < ApplicationController
   def show
     change_state(params[:state]) if params[:state]
     @order = current_cart.decorate
+    authorize @order, policy_class: CheckoutPolicy
   end
 
   def update
