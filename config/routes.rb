@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resource :address, only: [:update]
   resources :reviews, only: [:create]
   resource :cart, only: [:show, :update]
-  resource :checkout, only: [:show]
+  resource :checkout, only: [:show, :update]
   resource :quick_registration, only: [:show, :create]
 end
