@@ -1,0 +1,20 @@
+%main.container.mb-res-50W
+  = simple_form_for('order[card]', url: checkout_path, method: :put, defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'max-600 mb-80 center-form' }}) do |f|
+    %h3.general-subtitle= t('checkouts.payment.credit_card')
+    = f.input :number, required: true, placeholder: t('checkouts.payment.placeholders.number')
+    .row
+      .col-sm-6
+        = f.input :name, required: true, placeholder: t('checkouts.payment.placeholders.name')
+      .col-sm-3
+        = f.input :expiry_date, required: true, placeholder: t('checkouts.payment.placeholders.expiry_date')
+      .col-sm-3
+        =f.input :cvv, as: :password, placeholder: t('checkouts.payment.placeholders.cvv')
+        %span.cvv-hint
+          %i.fa.fa-question-circle.general-form-help.mr-10
+            %span.cvv-hint-text.hidden-xs
+              = t('checkouts.payment.cvv_hint')
+          %span.cvv-hint-text.visible-xs.xs-hint
+            = t('checkouts.payment.cvv_hint')
+    = render partial: 'checkouts/partials/order_summary', locals: { order: @order }
+    .text-center
+      = f.button :submit, t('checkouts.save_and_continue')
