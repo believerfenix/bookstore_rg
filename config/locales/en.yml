@@ -106,5 +106,47 @@ en:
     new_customer: New Customer
     you_will_be_able_to_create_password_later: You’ll be able to create password later
     continue_checkout: Continue to Checkout
+    save_and_continue: Save and Continue
+    checkout: Checkout
+    complete:
+      complete: Complete
+      thanks: Thank You for your Order!
+      confirmation_sent: "An order confirmation has been sent to %{email}"
+      order: "Order #%{order}"
+      back_to_store: Back to Store
+    addresses:
+      addresses: Addresses
+      billing_address: Billing Address
+      all_fields_are_required: all fields are required
+      shipping_address: Shipping Address
+      use_billing_address: Use Billing Address
+    delivery:
+      delivery: Delivery
+      method: Method
+      days: Days
+      from_to_days: "From %{min_days} to %{max_days} days"
+      price: Price
+    payment:
+      payment: Payment
+      cvv_hint: 3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front.
+      credit_card: Credit Card
+      placeholders:
+        number: Card Number
+        name: Name on Card
+        expiry_date: MM / YY
+        cvv: CVV
+    confirm:
+      confirm: Confirm
+      phone: "Phone %{phone}"
+      payment_information: Payment Information
+      hidden_card: "** ** ** %{digits}"
+      quantity: Quantity
+      total: Total
+      book: Book
+      order_summary: Order Summary
+      shipping: Shipping
+      place_order: Place Order
+  order_mailer:
+    subject: "Dear Customer, order #%{order_number} created successfully!"
   quick_registration:
     success: 'User successfully created, email with password change instructions were sent'
