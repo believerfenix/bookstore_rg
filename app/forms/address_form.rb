@@ -4,7 +4,7 @@ class AddressForm
   include ActiveModel::Model
 
   attr_accessor :id, :first_name, :last_name, :address, :city, :zip, :country, :phone, :kind, :created_at, :updated_at,
-                :user, :user_id
+                :user, :user_id, :addressable_type, :addressable_id
 
   LENGTH = {
     first_name: 50,
@@ -28,12 +28,12 @@ class AddressForm
   validate :country_code_of_the_selected_country
   validate :country_from_the_above
 
-  def save
+  def save(object)
     return false if invalid?
 
     case kind
-    when 'billing' then user.billing_address = Address.new(params)
-    when 'shipping' then user.shipping_address = Address.new(params)
+    when 'billing' then object.billing_address = Address.new(params)
+    when 'shipping' then object.shipping_address = Address.new(params)
     end
   end
 
