@@ -25,13 +25,13 @@ RSpec.describe 'books#show', type: :feature do
       let(:review_attributes) { attributes_for(:review) }
 
       before do
-        fill_in('review_title', with: review_attributes[:title])
-        fill_in('review_body', with: review_attributes[:body])
+        fill_in('review_form_title', with: review_attributes[:title])
+        fill_in('review_form_body', with: review_attributes[:body])
         page.all(:css, '.fa-star').first.click
         click_button(I18n.t('button.post'))
       end
 
-      it 'displays success messasge' do
+      it 'displays success message' do
         expect(page).to have_content(I18n.t('review.success'))
       end
     end

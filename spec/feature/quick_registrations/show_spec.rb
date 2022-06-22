@@ -40,10 +40,17 @@ RSpec.describe 'QuickRegistrations', type: :feature do
 
   describe 'quick registration form' do
     let(:user_data) { attributes_for(:user) }
+    let!(:book) { create(:book) }
 
-    before { visit quick_registration_path }
+    before do
+      visit root_path
+      click_link(I18n.t('home.buy_now'))
+      visit quick_registration_path
+    end
 
     context 'when email is valid' do
+      let(:order) { create(:order) }
+
       before do
         within 'div.col-md-5.col-md-offset-1.mb-60' do
           fill_in(I18n.t('devise.email'), with: user_data[:email])
