@@ -12,7 +12,7 @@ RSpec.describe OrderDecorator do
     subject { decorated_order.order_items_subtotal }
 
     let(:expected_result) do
-      order_items.inject(0) { |sum, item| sum + item.quantity * item.book.price }
+      order_items.inject(0) { |sum, item| sum + (item.quantity * item.book.price) }
     end
 
     context 'when discount equals expected result' do
@@ -61,7 +61,7 @@ RSpec.describe OrderDecorator do
 
     context 'with coupon' do
       let(:expected_result) do
-        decorated_order.order_items_subtotal - decorated_order.order_items_subtotal * coupon.sale
+        decorated_order.order_items_subtotal - (decorated_order.order_items_subtotal * coupon.sale)
       end
 
       before { decorated_order.coupon = coupon }
