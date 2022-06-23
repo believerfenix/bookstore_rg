@@ -1,7 +1,7 @@
 %main.container
   %h1.general-title-margin= t('checkouts.checkout')
   %ul.steps.list-inline.list-center
-    - Order.states.each do |state, index|
+    - @order.order_checkout_states.each_with_index do |state, index|
       %li.step{class: ("active" if @order.passed_state?(state)) }
         %span.step-number= @order.state_done?(state) ? '✓' : index + 1
         %span.step-text.hidden-xs= t("checkouts.#{state}.#{state}")
