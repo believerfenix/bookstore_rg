@@ -5,9 +5,11 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Orders::SortOrdersService.new(order_state: params[:state]).call
+    authorize @order, policy_class: OrderPolicy
   end
 
   def show
     @order = Order.find_by(id: params[:id])
+    authorize @order, policy_class: OrderPolicy
   end
 end
