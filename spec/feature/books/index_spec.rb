@@ -19,11 +19,17 @@ RSpec.describe 'books#index', type: :feature do
     end
 
     context 'with selected category' do
-      before { first('ul.list-inline.pt-10.mb-25.mr-240') { click_link(category.name) } }
+      before { first('ul.list-inline.pt-10.mb-25.mr-240').click_link(category.name) }
 
       it 'displays category books' do
         category_books.each do |book|
           expect(page).to have_content(book.truncated_title)
+        end
+      end
+
+      it 'does not displays other books' do
+        another_category_books.each do |book|
+          expect(page).not_to have_content(book.truncated_title)
         end
       end
     end
