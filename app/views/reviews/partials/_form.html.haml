@@ -1,4 +1,4 @@
-= simple_form_for(review, url: reviews_path, html: { class: 'row' }, defaults: { input_html: { class: "form-control" }}) do |f|
+= simple_form_for review, as: :review, url: reviews_path, html: { class: 'row' }, defaults: { input_html: { class: "form-control" }} do |f|
   %h3= t('reviews.write_a_review')
   %p.general-info-text= t('reviews.score')
   .mb-15#stars
