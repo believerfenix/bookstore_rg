@@ -11,7 +11,7 @@ RSpec.describe 'ReviewsRequests', type: :request do
 
     before do
       sign_in user
-      post reviews_path, params: { review_form: review_post_data }
+      post reviews_path, params: { review: review_post_data }
     end
 
     it 'returns https redirect status' do
