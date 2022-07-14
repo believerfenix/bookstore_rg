@@ -136,15 +136,6 @@ ActiveRecord::Schema.define(version: 2022_04_25_123302) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "user_addresses", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "address_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_user_addresses_on_address_id"
-    t.index ["user_id"], name: "index_user_addresses_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -175,6 +166,4 @@ ActiveRecord::Schema.define(version: 2022_04_25_123302) do
   add_foreign_key "author_books", "books"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
-  add_foreign_key "user_addresses", "addresses"
-  add_foreign_key "user_addresses", "users"
 end
