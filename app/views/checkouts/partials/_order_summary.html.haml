@@ -9,7 +9,7 @@
     %td
       %p.font-16 #{t('cart.coupon')}:
     %td
-      %p.font-16= number_to_currency(order.discount)
+      %p.font-16= number_to_currency(order.order_discount)
   - if @order.state != Order.states.key(0)
     %tr
       %td
