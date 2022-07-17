@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe QuickRegistrations::QuickRegistrationsService do
+RSpec.describe QuickRegistrations::AuthenticationWithoutPasswordService do
   subject(:service) { described_class.call(user_params: user_params) }
 
   describe '.call' do

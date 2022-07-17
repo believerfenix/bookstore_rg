@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module QuickRegistrations
-  class QuickRegistrationsService < BaseService
+  class AuthenticationWithoutPasswordService < BaseService
     attr_reader :errors, :success_message, :user
 
     def initialize(params)
