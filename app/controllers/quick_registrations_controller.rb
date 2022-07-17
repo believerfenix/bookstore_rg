@@ -4,7 +4,7 @@ class QuickRegistrationsController < ApplicationController
   include Devise::Controllers::Helpers
 
   def create
-    service = QuickRegistrations::QuickRegistrationsService.call(user_params: quick_registrations_user_params)
+    service = QuickRegistrations::AuthenticationWithoutPasswordService.call(user_params: quick_registrations_user_params)
     if service.success?
       sign_in(service.user)
       flash[:success] = I18n.t('quick_registration.success')
