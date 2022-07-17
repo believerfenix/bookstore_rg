@@ -17,11 +17,11 @@ class OrderDecorator < Draper::Decorator
   end
 
   def order_discount
-    order_items_subtotal * discount
+    - order_items_subtotal * discount
   end
 
   def order_total
-    order_items_subtotal + delivery_price - order_discount
+    order_items_subtotal + delivery_price + order_discount
   end
 
   def address_credentials_full_name(kind)

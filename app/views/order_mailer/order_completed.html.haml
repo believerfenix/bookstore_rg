@@ -23,7 +23,7 @@
       %td= number_to_currency(@order.order_items_subtotal)
     %tr
       %td= t('.coupon')
-      %td= number_to_currency(@order.discount)
+      %td= number_to_currency(@order.order_discount)
     %tr
       %td= t('.shipping')
       %td= number_to_currency(@order.delivery_price)
