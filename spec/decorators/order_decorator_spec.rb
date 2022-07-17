@@ -42,7 +42,7 @@ RSpec.describe OrderDecorator do
     subject { decorated_order.order_discount }
 
     context 'without coupon' do
-      let(:expected_result) { decorated_order.order_items_subtotal * coupon.sale }
+      let(:expected_result) { - decorated_order.order_items_subtotal * coupon.sale }
 
       before { decorated_order.coupon = coupon }
 
