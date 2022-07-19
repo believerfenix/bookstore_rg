@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   decorates_assigned :orders, :order
 
   def index
-    @orders = Orders::SortOrdersService.new(order_state: params[:state]).call
+    @orders = Orders::SortOrdersService.new(order_state: params[:state], user: current_user).call
     authorize @order, policy_class: OrderPolicy
   end
 

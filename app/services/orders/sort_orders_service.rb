@@ -2,12 +2,13 @@
 
 module Orders
   class SortOrdersService
-    attr_reader :orders
+    attr_reader :orders, :current_user
 
     ORDER_DEFAULT_FILTER = :checkout_complete
 
     def initialize(params)
       @order_state = params[:order_state]
+      @current_user = params[:user]
     end
 
     def call
@@ -19,11 +20,11 @@ module Orders
     def find_orders
       return unless valid_state?
 
-      Order.where(state: @order_state)
+      Order.where(state: @order_state, user_id: current_user.id)
     end
 
     def find_checkout_finished_orders
-      Order.checkout_finished.order(created_at: :desc)
+      Order.where(user_id: current_user.id).checkout_finished.order(created_at: :desc)
     end
 
     def valid_state?
