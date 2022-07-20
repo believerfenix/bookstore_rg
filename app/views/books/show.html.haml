@@ -1,0 +1,54 @@
+%main.container
+  = link_to request.referer, class: 'general-back-link' do
+    %i.fa.fa-long-arrow-left.mr-15
+      = t('book.back_to_catalog')
+  .row
+    .col-sm-6
+      .product-gallery
+        - if book.title_image.attached?
+          .mb-20
+            %a{href: url_for(book.title_image)}
+              %img.img-responsive{src: url_for(book.resize_title_image(550)), alt: "design-book"}
+        - if book.images.attached?
+          .images.clearfix
+            - book.resized_images(170).each do |image|
+              %a.img-link{href: url_for(image)}
+                %img{src: url_for(image)}
+    .col-sm-6
+      %h1.mt-res-0= book.title
+      %p.lead.small= book.all_authors_fullname
+      .row
+        .col-xs-12.col-md-4
+          %p.h1.in-gold-500.mt-10 #{book.price}
+        = simple_form_for 'order[order_item]', url: cart_path, method: :put do |f|
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              %a.input-link.b-n.pt-7#minus
+                %i.fa.fa-minus.line-height-40
+              = f.hidden_field :book_id, value: book.id
+              = f.text_field :quantity, class: 'form-control quantity-input input-count-book', value: 1
+              %a.b-n.input-link#plus
+                %i.fa.fa-plus.line-height-40
+          .col-xs-7.col-md-5
+            = f.button :submit, t('button.add_to_cart'), class: 'btn btn-default pull-right general-position'
+      .general-info-wrap.divider-lg
+        = render partial: 'books/partials/book_description'
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('book.publication_year')
+          %p.lead.small.pull-right= book.publication_year
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('book.dimensions')
+          %p.lead.small.pull-right
+            = t('book.dimensions_params',height: book.height, width: book.width, depth: book.depth)
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('book.material')
+          %p.lead.small.pull-right= book.materials
+  .mb-80#review_form
+    - if user_signed_in?
+      = render 'reviews/partials/form', book_id: book.id, review: ReviewForm.new
+  .mb-80
+    %h3.in-gold-500.mb-25= t('review.reviews', reviews_count: book.reviews.approved.count)
+    = render partial: 'books/partials/review', collection: book.reviews.approved, as: :review

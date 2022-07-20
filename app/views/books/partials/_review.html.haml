@@ -1,0 +1,13 @@
+.general-message-wrap.divider-lg
+  .clearfix
+    %span.img-circle.logo-size.inlide-block.pull-left.logo-empty= review.user.email.chr.capitalize
+    .ml-70
+      %div
+        .general-message-date.hidden-xs= I18n.l review.created_at
+        .max-240
+          .general-message-verified= t('reviews.verified_reviewer')
+          .general-message-name= review.title
+      .mb-15
+        - (1..5).each do |index|
+          %i.fa.fa-star.rate-star{class: "#{'rate-empty' unless index <= review.book_rate}"}
+      %p= review.body

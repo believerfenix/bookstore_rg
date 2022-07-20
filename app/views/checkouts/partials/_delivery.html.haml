@@ -1,0 +1,55 @@
+%main.container.general-main-wrap
+  .visible-xs
+    = simple_form_for(:order, url: checkout_path, method: :put, html: { class: 'res-mb-100' }) do |f|
+      - DeliveryType.all.each_with_index do |delivery, index|
+        .general-cart-item.divider-lg-bottom
+          %table.table
+            %tr
+              %td.col-half
+                %span.in-grey-600= t('checkouts.delivery.method')
+              %td.col-half
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label
+                    = radio_button_tag 'color', "green", true, class: "color_input"
+                    %span.radio-icon
+                    %span.radio-text= delivery.name
+            %tr
+              %td
+                %span.in-grey-600= t('checkouts.delivery.days')
+              %td
+                %span.font-16.fw-300= t('checkouts.delivery.from_to_days', min_days: delivery.min_days, max_days: delivery.max_days)
+            %tr
+              %td
+                %span.in-grey-600= t('checkouts.delivery.price')
+              %td
+                %span.font-16.in-gold-50= number_to_currency(delivery.price)
+          = render partial: 'checkouts/partials/order_summary', locals: { order: @order }
+          .text-center
+            %button.btn.btn-default.mb-20= f.button :submit, t('checkouts.save_and_continue')
+  .hidden-xs.mb-res-50
+    = simple_form_for :order, url: checkout_path, method: :put do |f|
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-method
+              %span.in-grey-600.ml-40= t('checkouts.delivery.method')
+            %th
+              %span.in-grey-600= t('checkouts.delivery.method')
+            %th
+              %span.in-grey-600= t('checkouts.delivery.price')
+        %tbody
+          - DeliveryType.all.each_with_index do |delivery, index|
+            %tr
+              %td
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label
+                    = radio_button_tag 'order[delivery_id]', delivery.id, index, class: 'radio-input', hidden: true
+                    %span.radio-icon
+                    %span.radio-text= delivery.name
+              %td
+                %span= t('checkouts.delivery.from_to_days', min_days: delivery.min_days, max_days: delivery.max_days)
+              %td
+                %span.font-16.in-gold-500= number_to_currency(delivery.price)
+      = render partial: 'checkouts/partials/order_summary', locals: { order: @order }
+      .text-center
+        = f.button :submit, t('checkouts.save_and_continue')

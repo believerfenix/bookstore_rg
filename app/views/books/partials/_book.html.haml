@@ -1,0 +1,15 @@
+.col-xs-6.col-sm-3
+  .general-thumb-wrap
+    .thumbnail.general-thumbnail
+      %img.img-shadow.general-thumbnail-img{src: url_for(book.resize_title_image(200)), alt: "design-book"}
+      .thumb-hover
+        .general-thumb-link-wrap
+          = link_to book_path(id: book), class: 'thumb-hover-link' do
+            %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+          = link_to cart_path(order: { order_item: { book_id: book.id, quantity: 1 } }), method: :put, class: 'thumb-hover-link' do
+            %i.fa.fa-shopping-cart.thumb-icon
+  .general-thumb-info
+    %p.title= book.truncated_title
+    %p.font-16.in-gold-500= number_to_currency(book.price)
+    %span.divider-sm
+    %p.lead.small= book.truncated_all_authors_fullname

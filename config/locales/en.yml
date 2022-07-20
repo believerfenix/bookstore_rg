@@ -1,0 +1,166 @@
+en:
+  time:
+    formats:
+      default: "%Y.%m.%d - %H:%M"
+  number:
+     currency:
+        format:
+          unit: '€'
+          delimiter: ','
+          separator: '.'
+          precision: 2
+          format: '%u%n'
+  home:
+    welcome: Welcome to our amazing Bookstore!
+    about: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+    best_sellers: Best Sellers
+    buy_now: Buy now
+  layout:
+    title: Bookstore
+    home: Home
+    shop: Shop
+    my_account: My account
+    orders: Orders
+    settings: Settings
+    log_out: Log out
+    email: support@bookstore.com
+    phone: (555)-555-5555
+  button:
+    save: Save
+    go_back: Go back
+    cancel: Cancel
+    get_started: Get Started
+    post: Post
+    checkout: Checkout
+    add_to_cart: Add to cart
+    apply_coupon: Apply Coupon
+  catalog:
+    title: Catalog
+    all: All
+    dropdown: 
+      created_at_asc: Newest first
+      popular_asc: Popular first
+      price_asc: "Price: Low to hight"
+      price_desc: "Price: Hight to low"
+    load_more: Load more...
+  book:
+    back_to_catalog: Back to results
+    description: Description
+    read_more: Read more
+    hide: Hide
+    publication_year: Year of publication
+    dimensions: Dimensions
+    dimensions_params: 'H:%{height} x W: %{width} x D: %{depth}'
+    material: Material
+    sort:
+      created_at_desc: Newest first
+      popular_asc: 'Popular'
+      price_asc: 'Price: Low to hight'
+      price_desc: 'Price: Hight to low'
+      title_asc: 'Title: A - Z'
+      title_desc: 'Title: Z - A'
+  address:
+    form:
+      success: Successfully added %{kind} address
+    kind:
+      billing: Billing Address
+      shipping: Shipping Address
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    country: Country
+    city: City
+    zip: Zip
+    phone: Phone
+  registrations:
+    settings: Settings
+    address: Address
+    privacy: Privacy
+  review:
+    score: Score
+    verified_reviewer: Verified reviewer
+    reviews: Reviews %{reviews_count}
+    success: Thanks for Review. It will be published as soon as Admin will approve it.
+  cart:
+    cart: Cart
+    cart_is_empty: Cart is empty
+    coupon_used: Coupon has already used.
+    invalid_coupon: Invalid coupon code.
+    coupon_added: Coupon successfully added to your cart.
+    quantity: Quantity
+    price: Price
+    subtotal: SubTotal
+    product: Product
+    enter_coupon_code: Enter Your Coupon Code
+    order_summary: Order Summary
+    coupon: Coupon
+    order_total: Order Total
+    book_added: Cart successfully updated
+    low_quantity: should be positive
+    hight_quantity: Not enough books to buy
+    item_deleted: Item successfully deleted
+  authorization:
+    not_authorized: User not authorized
+  checkouts:
+    returning_customer: Returning Customer
+    new_customer: New Customer
+    you_will_be_able_to_create_password_later: You’ll be able to create password later
+    continue_checkout: Continue to Checkout
+    save_and_continue: Save and Continue
+    checkout: Checkout
+    complete:
+      complete: Complete
+      thanks: Thank You for your Order!
+      confirmation_sent: "An order confirmation has been sent to %{email}"
+      order: "Order #%{order}"
+      back_to_store: Back to Store
+    addresses:
+      addresses: Addresses
+      billing_address: Billing Address
+      all_fields_are_required: all fields are required
+      shipping_address: Shipping Address
+      use_billing_address: Use Billing Address
+    delivery:
+      delivery: Delivery
+      method: Method
+      days: Days
+      from_to_days: "From %{min_days} to %{max_days} days"
+      price: Price
+    payment:
+      payment: Payment
+      cvv_hint: 3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front.
+      credit_card: Credit Card
+      placeholders:
+        number: Card Number
+        name: Name on Card
+        expiry_date: MM / YY
+        cvv: CVV
+    confirm:
+      confirm: Confirm
+      phone: "Phone %{phone}"
+      payment_information: Payment Information
+      hidden_card: "** ** ** %{digits}"
+      quantity: Quantity
+      total: Total
+      book: Book
+      order_summary: Order Summary
+      shipping: Shipping
+      place_order: Place Order
+  order_mailer:
+    subject: "Dear Customer, order #%{order_number} created successfully!"
+  quick_registration:
+    success: 'User successfully created, email with password change instructions were sent'
+  orders:
+    my_orders: My Orders
+    sort_by: Sort by
+    number: Number
+    completed_at: Completed at
+    status: Status
+    total: Total
+    date: Date
+    sort:
+      checkout_complete: Waiting for processing
+      in_delivery: In delivery
+      delivered: Delivered
+      canceled: Canceled
+    orders_not_found: Orders not found.
