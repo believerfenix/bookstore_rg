@@ -44,3 +44,9 @@
         .clearfix
           %p.pull-left= t('book.material')
           %p.lead.small.pull-right= book.materials
+  .mb-80#review_form
+    - if user_signed_in?
+      = render 'reviews/partials/form', book_id: book.id, review: ReviewForm.new
+  .mb-80
+    %h3.in-gold-500.mb-25= t('review.reviews', reviews_count: book.reviews.approved.count)
+    = render partial: 'books/partials/review', collection: book.reviews.approved, as: :review

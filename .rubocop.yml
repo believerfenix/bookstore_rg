@@ -29,6 +29,7 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*'
+    - 'app/controllers/reviews_controller.rb'
 
 Rails/BulkChangeTable:
   Enabled: false
