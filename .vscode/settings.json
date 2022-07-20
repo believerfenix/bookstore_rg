@@ -1,10 +1,15 @@
 {
   "cSpell.words": [
+    "activerecord",
     "activestorage",
+    "datetime",
     "foreing",
     "fullname",
     "javascripts",
+    "omniauth",
+    "omniauthable",
     "Pagy",
-    "Turbolinks"
+    "Turbolinks",
+    "validatable"
   ]
 }

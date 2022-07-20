@@ -20,15 +20,17 @@
       .row
         .col-xs-12.col-md-4
           %p.h1.in-gold-500.mt-10 #{book.price}
-        .col-xs-5.col-md-3
-          .input-group.general-position
-            %a.input-link.b-n.pt-7#minus
-              %i.fa.fa-minus.line-height-40
-            = text_field_tag "books_count", "", class: 'form-control quantity-input input-count-book', value: 1
-            %a.b-n.input-link#plus
-              %i.fa.fa-plus.line-height-40
-        .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position= t('book.add_to_cart')
+        = simple_form_for 'order[order_item]', url: cart_path, method: :put do |f|
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              %a.input-link.b-n.pt-7#minus
+                %i.fa.fa-minus.line-height-40
+              = f.hidden_field :book_id, value: book.id
+              = f.text_field :quantity, class: 'form-control quantity-input input-count-book', value: 1
+              %a.b-n.input-link#plus
+                %i.fa.fa-plus.line-height-40
+          .col-xs-7.col-md-5
+            = f.button :submit, t('button.add_to_cart'), class: 'btn btn-default pull-right general-position'
       .general-info-wrap.divider-lg
         = render partial: 'books/partials/book_description'
       .general-info-wrap.divider-lg

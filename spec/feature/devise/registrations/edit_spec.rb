@@ -114,7 +114,7 @@ RSpec.describe 'Edit', type: :feature do
     end
 
     context 'with invalid input' do
-      let(:invalid_email) { 'dasdasd' }
+      let(:invalid_email) { 'user' }
 
       it 'displays invalid format message' do
         within '#email-form' do
