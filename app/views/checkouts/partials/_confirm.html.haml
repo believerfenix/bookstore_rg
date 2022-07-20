@@ -1,0 +1,98 @@
+%main.container.general-main-wrap
+  .row.mb-20
+    - if @order.order_address('shipping')
+      .col-sm-3
+        %h3.general-subtitle= t('checkouts.address.shipping_address')
+        %p.general-address
+          = @order.address_credentials_full_name('shipping')
+          = link_to 'edit', checkout_path(state: :address), class:'span general-edit'
+          %br
+          = @order.order_address_address('shipping')
+          %br
+          = @order.address_city_with_zip('shipping')
+          %br
+          = @order.order_address_country('shipping')
+          %br
+          = @order.address_phone('shipping')
+    .col-sm-3
+      %h3.general-subtitle= t('checkouts.address.billing_address')
+      %p.general-address
+        = @order.address_credentials_full_name('billing')
+        = link_to 'edit', checkout_path(state: :address), class:'span general-edit'
+        %br
+        = @order.order_address_address('billing')
+        %br
+        = @order.address_city_with_zip('billing')
+        %br
+        = @order.order_address_country('billing')
+        %br
+        = @order.address_phone('billing')
+    .col-sm-3
+      %h3.general-subtitle= t('checkouts.delivery.delivery')
+      %p.general-address
+        = @order.delivery_type.name
+        %span.general-edit= link_to 'edit', checkout_path(state: :delivery), class:'span general-edit'
+        %br
+        = t('checkouts.delivery.from_to_days', min_days: @order.delivery_type.min_days, max_days: @order.delivery_type.max_days)
+    .col-sm-3
+      %h3.general-subtitle= t('checkouts.confirm.payment_information')
+      %p.general-address
+        = t('checkouts.confirm.hidden_card', digits: @order.card.last_four_digits)
+        %span.general-edit= link_to 'edit', checkout_path(state: :payment), class:'span general-edit'
+        %br
+        = @order.card.expiry_date
+  .visible-xs
+    - @order.order_items.each do |item|
+      .general-cart-item.divider-lg.mb-55
+        - if item.book.title_image.attached?
+          .general-img-wrap-table
+            %img.cart-img-shadow{src: url_for(item.book.title_image), alt: "design-book"}
+          %p.title= item.book.title
+          %table.table
+            %tr
+              %td
+                %span.in-grey-600= t('checkouts.delivery.price')
+              %td
+                %span.font-16.in-gold-500= number_to_currency(item.book.price)
+            %tr
+              %td.vertical-middle
+                %span.in-grey-600= t('checkouts.confirm.quantity')
+              %td
+                %span.font-16.in-gold-500= item.quantity
+            %tr
+              %td
+                %span.in-grey-600= t('checkouts.confirm.total')
+              %td
+                %span.font-16.in-gold-500= number_to_currency(item.subtotal)
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('checkouts.confirm.book')
+          %th.col-method
+          %th
+            %span.in-grey-600= t('checkouts.delivery.price')
+          %th
+            %span.in-grey-600= t('checkouts.confirm.quantity')
+          %th
+            %span.in-grey-600= t('checkouts.confirm.total')
+      %tbody
+        - @order.order_items.each do |item|
+          %tr
+            %td
+              - if item.book.title_image.attached?
+                .general-img-wrap-table
+                  %img.cart-img-shadow.pull-left{src: url_for(item.book.title_image), alt: "design-book"}
+            %td
+              %p.title= item.book.title
+              %p.in-grey-600.fw-300= item.book.description
+            %td
+              %span.font-16.in-gold-500= number_to_currency(item.book.price)
+            %td
+              %span.font-16.in-gold-500= item.quantity
+            %td
+              %span.font-16.in-gold-500= number_to_currency(item.subtotal)
+  = render partial: 'checkouts/partials/order_summary', locals: { order: @order }
+  .text-center
+    = link_to t('checkouts.confirm.place_order'), checkout_path(state: :complete), class:'btn btn-default mb-20'

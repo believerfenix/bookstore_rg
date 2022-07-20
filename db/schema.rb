@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_09_102429) do
+ActiveRecord::Schema.define(version: 2022_06_14_205421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,10 +66,11 @@ ActiveRecord::Schema.define(version: 2022_05_09_102429) do
     t.string "country"
     t.string "phone"
     t.integer "kind"
-    t.bigint "user_id"
+    t.string "addressable_type"
+    t.bigint "addressable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -117,6 +118,17 @@ ActiveRecord::Schema.define(version: 2022_05_09_102429) do
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
+    t.string "expiry_date"
+    t.integer "cvv"
+    t.bigint "order_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_cards_on_order_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -133,6 +145,24 @@ ActiveRecord::Schema.define(version: 2022_05_09_102429) do
     t.index ["order_id"], name: "index_coupons_on_order_id"
   end
 
+  create_table "delivery_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "min_days"
+    t.integer "max_days"
+    t.decimal "price", precision: 10, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_delivery_types", force: :cascade do |t|
+    t.bigint "delivery_type_id"
+    t.bigint "order_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["delivery_type_id"], name: "index_order_delivery_types_on_delivery_type_id"
+    t.index ["order_id"], name: "index_order_delivery_types_on_order_id"
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "book_id"
@@ -145,6 +175,7 @@ ActiveRecord::Schema.define(version: 2022_05_09_102429) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
+    t.integer "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -188,10 +219,12 @@ ActiveRecord::Schema.define(version: 2022_05_09_102429) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "users"
   add_foreign_key "author_books", "authors"
   add_foreign_key "author_books", "books"
+  add_foreign_key "cards", "orders"
   add_foreign_key "coupons", "orders"
+  add_foreign_key "order_delivery_types", "delivery_types"
+  add_foreign_key "order_delivery_types", "orders"
   add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

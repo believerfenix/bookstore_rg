@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 require 'pundit/rspec'
+require 'rack_session_access/capybara'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

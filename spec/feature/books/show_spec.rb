@@ -31,7 +31,7 @@ RSpec.describe 'books#show', type: :feature do
         click_button(I18n.t('button.post'))
       end
 
-      it 'displays success messasge' do
+      it 'displays success message' do
         expect(page).to have_content(I18n.t('review.success'))
       end
     end

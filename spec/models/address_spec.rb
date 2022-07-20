@@ -15,7 +15,7 @@ RSpec.describe Address, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:addressable) }
   end
 
   describe 'cast enum value' do

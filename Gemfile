@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'aasm', '~> 5.2'
 gem 'activeadmin', '~> 2.11'
+gem 'after_commit_everywhere', '~> 1.0'
 gem 'aws-sdk-s3', '~> 1.113', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'countries', '~> 3.1'
@@ -55,6 +56,7 @@ end
 group :test do
   gem 'database_cleaner', '~> 2.0.1'
   gem 'pry', '~> 0.14.0'
+  gem 'rack_session_access', '~> 0.2.0'
   gem 'rack-test', '~> 1.1'
   gem 'rails-controller-testing', '~> 1.0.5'
   gem 'selenium-webdriver', '~> 4.1.0'

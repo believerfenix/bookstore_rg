@@ -4,9 +4,9 @@ class User < ApplicationRecord
   PASSWORD_FORMAT = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/.freeze
 
   has_one :billing_address, -> { billing },
-          inverse_of: :user, class_name: 'Address', dependent: :destroy
+          inverse_of: :addressable, as: :addressable, class_name: 'Address', dependent: :destroy
   has_one :shipping_address, -> { shipping },
-          inverse_of: :user, class_name: 'Address', dependent: :destroy
+          inverse_of: :addressable, as: :addressable, class_name: 'Address', dependent: :destroy
 
   has_many :reviews, dependent: :destroy
 

@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
   def update
     address_form = AddressForm.new(address_params)
     authorize address_form, policy_class: AddressPolicy
-    if address_form.save
+    if address_form.save(current_user)
       flash[:success] = t('address.form.success', kind: address_params[:kind])
     else
       flash[:danger] = address_form.errors.full_messages.to_sentence

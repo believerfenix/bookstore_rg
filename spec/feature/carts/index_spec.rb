@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe 'carts#show', type: :feature do
-  let!(:book) { create(:book) }
+  let!(:order) { create(:order, order_items: order_items) }
+  let(:order_items) { create_list(:order_item, 1) }
 
   before do
-    visit root_path
-    click_link(I18n.t('home.buy_now'))
-    click_link(I18n.t('home.buy_now'))
+    page.set_rack_session(cart_id: order.id)
     visit cart_path
   end
 
