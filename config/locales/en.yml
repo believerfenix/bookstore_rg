@@ -150,3 +150,17 @@ en:
     subject: "Dear Customer, order #%{order_number} created successfully!"
   quick_registration:
     success: 'User successfully created, email with password change instructions were sent'
+  orders:
+    my_orders: My Orders
+    sort_by: Sort by
+    number: Number
+    completed_at: Completed at
+    status: Status
+    total: Total
+    date: Date
+    sort:
+      checkout_complete: Waiting for processing
+      in_delivery: In delivery
+      delivered: Delivered
+      canceled: Canceled
+    orders_not_found: Orders not found.

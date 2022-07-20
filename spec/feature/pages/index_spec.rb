@@ -19,5 +19,19 @@ RSpec.describe 'index', type: :feature do
         expect(page).to have_content(book.all_authors_fullname)
       end
     end
+
+    describe 'best sellers' do
+      let(:order) { create(:order, state: :in_delivery) }
+      let!(:order_items) { create_list(:order_item, PagesController::BESTSELLERS_COUNT, order: order) }
+      let(:books_titles) { order_items.map { |item| item.book.title } }
+
+      before { visit root_path }
+
+      it "displays #{PagesController::BESTSELLERS_COUNT} best sold books" do
+        books_titles.each do |title|
+          expect(page).to have_content(title)
+        end
+      end
+    end
   end
 end

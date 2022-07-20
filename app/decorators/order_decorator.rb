@@ -53,10 +53,18 @@ class OrderDecorator < Draper::Decorator
   end
 
   def last_state?(index)
-    Order.states.count - 1 == index
+    order_checkout_states.count - 1 == index
+  end
+
+  def order_checkout_states
+    %i[address delivery payment confirm checkout_complete]
   end
 
   def passed_state?(state)
     state_done?(state) || self.state == state
+  end
+
+  def humanized_state
+    state.humanize
   end
 end

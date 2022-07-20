@@ -2,7 +2,7 @@
 
 RSpec.describe 'Checkout Complete', type: :feature do
   let(:user) { create(:user) }
-  let(:order) { create(:order, order_items: order_items, delivery_type: delivery_type, state: :complete) }
+  let(:order) { create(:order, order_items: order_items, delivery_type: delivery_type, state: :checkout_complete) }
   let(:order_items) { create_list(:order_item, 3) }
   let(:delivery_type) { create(:delivery_type) }
   let!(:billing_address) { create(:address, addressable: order, kind: :billing) }

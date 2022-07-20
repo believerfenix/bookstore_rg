@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resource :cart, only: [:show, :update]
   resource :checkout, only: [:show, :update]
   resource :quick_registration, only: [:show, :create]
+  resources :orders, only: [:index, :show]
 end

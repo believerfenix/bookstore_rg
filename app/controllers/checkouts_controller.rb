@@ -8,9 +8,10 @@ class CheckoutsController < ApplicationController
   }.freeze
 
   def show
-    change_state(params[:state]) if params[:state]
-    @order = current_cart.decorate
-    authorize @order, policy_class: CheckoutPolicy
+    service = change_order_state if params[:state]
+    clear_cart_id if params[:state] == 'checkout_complete'
+
+    @order = service&.completed_order&.decorate || current_cart.decorate
   end
 
   def update
@@ -30,13 +31,11 @@ class CheckoutsController < ApplicationController
                                   card: %i[number name expiry_date cvv])
   end
 
-  def change_state(state)
-    send_complete_mail if state == Order.states.key(4)
-
-    current_cart.update(state: state)
+  def change_order_state
+    Orders::ChangeOrderStateService.call(order: current_cart, state: params[:state], user: current_user)
   end
 
-  def send_complete_mail
-    OrderMailer.order_completed(current_cart, current_user).deliver
+  def clear_cart_id
+    session[:cart_id] = nil
   end
 end

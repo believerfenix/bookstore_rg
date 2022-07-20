@@ -95,4 +95,4 @@
               %span.font-16.in-gold-500= number_to_currency(item.subtotal)
   = render partial: 'checkouts/partials/order_summary', locals: { order: @order }
   .text-center
-    = link_to t('checkouts.confirm.place_order'), checkout_path(state: :complete), class:'btn btn-default mb-20'
+    = link_to t('checkouts.confirm.place_order'), checkout_path(state: :checkout_complete), class:'btn btn-default mb-20'

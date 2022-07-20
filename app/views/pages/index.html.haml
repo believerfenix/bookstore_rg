@@ -7,16 +7,17 @@
       .carousel-inner{role: "listbox"}
         - latest_books.each_with_index do |book, index|
           %div{ class: "item #{'active' if index.zero?}" }
-            .col-sm-5
-              .general-img-wrap
-                %img.img-shadow.general-thumbnail-img{src: url_for(book.resize_title_image(200)), alt: "design-book"}
-            .col-sm-7
-              .mb-60
-                %h1= book.title
-                %p.lead= book.short_description
-                %p.lead.small= book.all_authors_fullname
-                .general-align
-                  = link_to t('home.buy_now'), cart_path(order: { order_item: { book_id: book.id, quantity: 1 } }), method: :put, class: 'button btn btn-primary'
+            .row
+              .col-sm-5
+                .general-img-wrap
+                  %img.img-shadow.general-thumbnail-img{src: url_for(book.resize_title_image(200)), alt: "design-book"}
+              .col-sm-7
+                .mb-60
+                  %h1= book.title
+                  %p.lead= book.short_description
+                  %p.lead.small= book.all_authors_fullname
+                  .general-align
+                    = link_to t('home.buy_now'), cart_path(order: { order_item: { book_id: book.id, quantity: 1 } }), method: :put, class: 'button btn btn-primary'
       %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
         %span.icon-prev{'aria-hidden': "true"}
         %span.sr-only
@@ -32,67 +33,20 @@
     .mb-35
       %h3= t('home.best_sellers')
       .row
+      - @bestsellers.each do |book|
         .col-sm-6.col-md-3
           .general-thumb-wrap
             .thumbnail.general-thumbnail
-              %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+              %img.img-shadow.general-thumbnail-img{src: url_for(book.resize_title_image(200)), alt: "design-book"}
               .thumb-hover
                 .general-thumb-link-wrap
-                  %a.thumb-hover-link{href: "#"}
+                  = link_to book_path(id: book), class: 'thumb-hover-link' do
                     %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                  %a.thumb-hover-link{href: "#"}
+                  = link_to cart_path(order: { order_item: { book_id: book.id, quantity: 1 } }), method: :put, class: 'thumb-hover-link' do
                     %i.fa.fa-shopping-cart.thumb-icon
           .mb-35
             .clearfix
-              %p.pull-right.font-16.in-gold-500 €00.00
-              %p.title.mr-55 Ruby for Beginners
+              %p.pull-right.font-16.in-gold-500= number_to_currency(book.price)
+              %p.title.mr-55= book.truncated_title
             %span.divider-sm
-            %p.lead.small Yukihiro Matsumoto
-        .col-sm-6.col-md-3
-          .general-thumb-wrap
-            .thumbnail.general-thumbnail
-              %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-              .thumb-hover
-                .general-thumb-link-wrap
-                  %a.thumb-hover-link{href: "#"}
-                    %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                  %a.thumb-hover-link{href: "#"}
-                    %i.fa.fa-shopping-cart.thumb-icon
-          .mb-35
-            .clearfix
-              %p.pull-right.font-16.in-gold-500 €00.00
-              %p.title.mr-55 Ruby for Beginners
-            %span.divider-sm
-            %p.lead.small Yukihiro Matsumoto
-        .col-sm-6.col-md-3
-          .general-thumb-wrap
-            .thumbnail.general-thumbnail
-              %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-              .thumb-hover
-                .general-thumb-link-wrap
-                  %a.thumb-hover-link{href: "#"}
-                    %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                  %a.thumb-hover-link{href: "#"}
-                    %i.fa.fa-shopping-cart.thumb-icon
-          .mb-35
-            .clearfix
-              %p.pull-right.font-16.in-gold-500 €00.00
-              %p.title.mr-55 Ruby for Beginners
-            %span.divider-sm
-            %p.lead.small Yukihiro Matsumoto
-        .col-sm-6.col-md-3
-          .general-thumb-wrap
-            .thumbnail.general-thumbnail
-              %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-              .thumb-hover
-                .general-thumb-link-wrap
-                  %a.thumb-hover-link{href: "#"}
-                    %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                  %a.thumb-hover-link{href: "#"}
-                    %i.fa.fa-shopping-cart.thumb-icon
-          .mb-35
-            .clearfix
-              %p.pull-right.font-16.in-gold-500 €00.00
-              %p.title.mr-55 Ruby for Beginners
-            %span.divider-sm
-            %p.lead.small Yukihiro Matsumoto
+            %p.lead.small= book.truncated_all_authors_fullname

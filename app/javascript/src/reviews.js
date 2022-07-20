@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(document).ready(function(){
   $(document).on('mouseover', '#stars i', function(){
     var onStar = parseInt($(this).data('value'), 10);
     $(this).parent().children('i.fa-star').each(function(e){
