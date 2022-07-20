@@ -19,7 +19,7 @@ RSpec.describe 'Edit', type: :feature do
             fill_in(I18n.t('address.city'), with: address_data[:city])
             fill_in(I18n.t('address.address'), with: address_data[:address])
             fill_in(I18n.t('address.zip'), with: address_data[:zip])
-            page.select(address_data[:country], from: 'address_form_country')
+            select(address_data[:country], from: 'address_form_country')
             fill_in(I18n.t('address.phone'), with: address_data[:phone])
             click_button(I18n.t('button.save'))
           end

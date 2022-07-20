@@ -33,3 +33,7 @@ Metrics/AbcSize:
 
 Rails/BulkChangeTable:
   Enabled: false
+
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/*'

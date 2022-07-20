@@ -22,4 +22,12 @@ class BookDecorator < ApplicationDecorator
   def short_description
     description.truncate(TRUNCATED_LENGTH[:description], separator: ' ')
   end
+
+  def resize_title_image(size)
+    title_image.variant(resize_to_limit: [size, size])
+  end
+
+  def resized_images(size)
+    images.each { |image| image.variant(resize_to_limit: [size, size]) }
+  end
 end
